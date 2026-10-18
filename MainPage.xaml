@@ -9,7 +9,7 @@
               Padding="20,16,20,32"
               RowSpacing="12"
               ColumnSpacing="12"
-              RowDefinitions="Auto"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
               ColumnDefinitions="Auto,*">
 
             <!-- Шапка -->
@@ -37,6 +37,56 @@
                        FontAttributes="Italic"
                        TextColor="{StaticResource Gray600}" />
             </VerticalStackLayout>
+
+            <!-- Личные данные -->
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Личные данные"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   Margin="0,12,0,0"
+                   TextColor="{StaticResource CoffeeDark}" />
+
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Имя *"
+                   FontSize="14"
+                   FontAttributes="None"
+                   VerticalOptions="Center" />
+            <Entry x:Name="NameEntry"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Placeholder="Как к вам обращаться?"
+                   Keyboard="Text"
+                   MaxLength="40" />
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Телефон *"
+                   FontSize="14"
+                   FontAttributes="None"
+                   VerticalOptions="Center" />
+            <Entry x:Name="PhoneEntry"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Placeholder="+7 900 000-00-00"
+                   Keyboard="Telephone"
+                   MaxLength="18" />
+
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Text="Дата визита"
+                   FontSize="14"
+                   FontAttributes="None"
+                   VerticalOptions="Center" />
+            <DatePicker x:Name="VisitDatePicker"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Format="dd.MM.yyyy"
+                        Date="10/18/2026"
+                        MinimumDate="01/01/2025"
+                        MaximumDate="12/31/2027" />
         </Grid>
     </ScrollView>
 
