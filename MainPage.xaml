@@ -9,7 +9,7 @@
               Padding="20,16,20,32"
               RowSpacing="12"
               ColumnSpacing="12"
-              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
               ColumnDefinitions="Auto,*">
 
             <!-- Шапка -->
@@ -168,6 +168,84 @@
                     <Label Text="Беру с собой"
                            VerticalOptions="Center" />
                 </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Оценка -->
+            <VerticalStackLayout Grid.Row="8"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="6"
+                                 Margin="0,12,0,0">
+                <Label Text="Оценка"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource CoffeeDark}" />
+
+                <Label x:Name="RatingValueLabel"
+                       x:DataType="Slider"
+                       Text="{Binding Source={x:Reference RatingSlider}, Path=Value, Mode=OneWay, StringFormat='Общее впечатление: {0:F0} из 10'}"
+                       FontSize="14"
+                       FontAttributes="None" />
+                <Slider x:Name="RatingSlider"
+                        Minimum="1"
+                        Maximum="10"
+                        Value="8"
+                        MinimumTrackColor="{StaticResource Coffee}"
+                        ThumbColor="{StaticResource CoffeeDark}"
+                        ValueChanged="OnRatingChanged" />
+
+                <HorizontalStackLayout Spacing="12">
+                    <Label x:Name="CupsLabel"
+                           Text="Чашек кофе в неделю: 3"
+                           FontSize="14"
+                           FontAttributes="None"
+                           VerticalOptions="Center" />
+                    <Stepper x:Name="CupsStepper"
+                             Minimum="0"
+                             Maximum="30"
+                             Increment="1"
+                             Value="3"
+                             ValueChanged="OnCupsChanged" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Рассылка -->
+            <Label Grid.Row="9"
+                   Grid.Column="0"
+                   Text="Получать новости и акции"
+                   FontSize="14"
+                   FontAttributes="None"
+                   VerticalOptions="Center" />
+            <Switch x:Name="NewsSwitch"
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    IsToggled="False"
+                    OnColor="{StaticResource Coffee}"
+                    HorizontalOptions="End"
+                    Toggled="OnNewsToggled" />
+
+            <Entry x:Name="EmailEntry"
+                   Grid.Row="10"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Placeholder="E-mail для рассылки"
+                   Keyboard="Email"
+                   MaxLength="60"
+                   IsVisible="False" />
+
+            <!-- Отзыв -->
+            <VerticalStackLayout Grid.Row="11"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="6">
+                <Label Text="Пожелания"
+                       FontSize="14"
+                       FontAttributes="None" />
+                <Editor x:Name="CommentEditor"
+                        Placeholder="Что нам улучшить? Можно написать что угодно"
+                        AutoSize="TextChanges"
+                        MaxLength="300"
+                        MinimumHeightRequest="80" />
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
