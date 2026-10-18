@@ -272,6 +272,11 @@
                             Text="Показать результат"
                             IsEnabled="False"
                             Clicked="OnShowResultClicked" />
+                    <Button x:Name="ClearButton"
+                            Text="Очистить"
+                            BackgroundColor="{StaticResource Gray300}"
+                            TextColor="{StaticResource Gray900}"
+                            Clicked="OnClearClicked" />
                 </HorizontalStackLayout>
 
                 <Border x:Name="ResultBorder"

@@ -4,6 +4,10 @@ namespace Anketa;
 
 public partial class MainPage : ContentPage
 {
+	private static readonly DateTime DefaultVisitDate = new(2026, 10, 18);
+	private const double DefaultRating = 8;
+	private const double DefaultCups = 3;
+
 	public MainPage()
 	{
 		InitializeComponent();
@@ -109,5 +113,33 @@ public partial class MainPage : ContentPage
 			: "Рассылка: нет");
 		sb.Append($"Пожелания: {(string.IsNullOrWhiteSpace(CommentEditor.Text) ? "—" : CommentEditor.Text.Trim())}");
 		return sb.ToString();
+	}
+
+	private void OnClearClicked(object? sender, EventArgs e)
+	{
+		NameEntry.Text = string.Empty;
+		PhoneEntry.Text = string.Empty;
+		VisitDatePicker.Date = DefaultVisitDate;
+
+		DrinkPicker.SelectedIndex = -1;
+		FirstTimeRadio.IsChecked = false;
+		MonthlyRadio.IsChecked = false;
+		WeeklyRadio.IsChecked = false;
+		DailyRadio.IsChecked = false;
+
+		DessertsCheckBox.IsChecked = false;
+		BreakfastCheckBox.IsChecked = false;
+		TakeawayCheckBox.IsChecked = true;
+
+		RatingSlider.Value = DefaultRating;
+		CupsStepper.Value = DefaultCups;
+		NewsSwitch.IsToggled = false;
+		EmailEntry.Text = string.Empty;
+		CommentEditor.Text = string.Empty;
+
+		ErrorLabel.IsVisible = false;
+		ResultLabel.Text = string.Empty;
+		ResultBorder.IsVisible = false;
+		ShowResultButton.IsEnabled = false;
 	}
 }
