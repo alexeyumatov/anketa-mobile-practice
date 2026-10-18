@@ -9,7 +9,7 @@
               Padding="20,16,20,32"
               RowSpacing="12"
               ColumnSpacing="12"
-              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
               ColumnDefinitions="Auto,*">
 
             <!-- Шапка -->
@@ -87,6 +87,88 @@
                         Date="10/18/2026"
                         MinimumDate="01/01/2025"
                         MaximumDate="12/31/2027" />
+
+            <!-- Предпочтения -->
+            <VerticalStackLayout Grid.Row="5"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="8"
+                                 Margin="0,12,0,0">
+                <Label Text="Ваши предпочтения"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource CoffeeDark}" />
+
+                <Picker x:Name="DrinkPicker"
+                        Title="Любимый напиток"
+                        TitleColor="{StaticResource Gray500}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Эспрессо</x:String>
+                            <x:String>Американо</x:String>
+                            <x:String>Капучино</x:String>
+                            <x:String>Латте</x:String>
+                            <x:String>Раф</x:String>
+                            <x:String>Чай</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="6"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="2">
+                <Label Text="Как часто вы у нас бываете? *"
+                       FontSize="14"
+                       FontAttributes="None" />
+                <RadioButton x:Name="FirstTimeRadio"
+                             Content="Впервые"
+                             GroupName="VisitFrequency"
+                             Value="Впервые" />
+                <RadioButton x:Name="MonthlyRadio"
+                             Content="Пару раз в месяц"
+                             GroupName="VisitFrequency"
+                             Value="Пару раз в месяц" />
+                <RadioButton x:Name="WeeklyRadio"
+                             Content="Каждую неделю"
+                             GroupName="VisitFrequency"
+                             Value="Каждую неделю" />
+                <RadioButton x:Name="DailyRadio"
+                             Content="Почти каждый день"
+                             GroupName="VisitFrequency"
+                             Value="Почти каждый день" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="7"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="4">
+                <Label Text="Что вы обычно берёте кроме напитков?"
+                       FontSize="14"
+                       FontAttributes="None" />
+                <HorizontalStackLayout Spacing="6">
+                    <CheckBox x:Name="DessertsCheckBox"
+                              IsChecked="False"
+                              Color="{StaticResource Coffee}" />
+                    <Label Text="Десерты"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="6">
+                    <CheckBox x:Name="BreakfastCheckBox"
+                              IsChecked="False"
+                              Color="{StaticResource Coffee}" />
+                    <Label Text="Завтраки"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="6">
+                    <CheckBox x:Name="TakeawayCheckBox"
+                              IsChecked="True"
+                              Color="{StaticResource Coffee}" />
+                    <Label Text="Беру с собой"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
         </Grid>
     </ScrollView>
 
