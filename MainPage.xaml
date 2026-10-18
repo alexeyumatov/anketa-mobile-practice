@@ -9,7 +9,7 @@
               Padding="20,16,20,32"
               RowSpacing="12"
               ColumnSpacing="12"
-              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
               ColumnDefinitions="Auto,*">
 
             <!-- Шапка -->
@@ -59,7 +59,8 @@
                    Grid.Column="1"
                    Placeholder="Как к вам обращаться?"
                    Keyboard="Text"
-                   MaxLength="40" />
+                   MaxLength="40"
+                   TextChanged="OnRequiredFieldChanged" />
 
             <Label Grid.Row="3"
                    Grid.Column="0"
@@ -72,7 +73,8 @@
                    Grid.Column="1"
                    Placeholder="+7 900 000-00-00"
                    Keyboard="Telephone"
-                   MaxLength="18" />
+                   MaxLength="18"
+                   TextChanged="OnRequiredFieldChanged" />
 
             <Label Grid.Row="4"
                    Grid.Column="0"
@@ -125,19 +127,23 @@
                 <RadioButton x:Name="FirstTimeRadio"
                              Content="Впервые"
                              GroupName="VisitFrequency"
-                             Value="Впервые" />
+                             Value="Впервые"
+                             CheckedChanged="OnFrequencyChanged" />
                 <RadioButton x:Name="MonthlyRadio"
                              Content="Пару раз в месяц"
                              GroupName="VisitFrequency"
-                             Value="Пару раз в месяц" />
+                             Value="Пару раз в месяц"
+                             CheckedChanged="OnFrequencyChanged" />
                 <RadioButton x:Name="WeeklyRadio"
                              Content="Каждую неделю"
                              GroupName="VisitFrequency"
-                             Value="Каждую неделю" />
+                             Value="Каждую неделю"
+                             CheckedChanged="OnFrequencyChanged" />
                 <RadioButton x:Name="DailyRadio"
                              Content="Почти каждый день"
                              GroupName="VisitFrequency"
-                             Value="Почти каждый день" />
+                             Value="Почти каждый день"
+                             CheckedChanged="OnFrequencyChanged" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="7"
@@ -246,6 +252,43 @@
                         AutoSize="TextChanges"
                         MaxLength="300"
                         MinimumHeightRequest="80" />
+            </VerticalStackLayout>
+
+            <!-- Кнопки и результат -->
+            <VerticalStackLayout Grid.Row="12"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Spacing="10"
+                                 Margin="0,8,0,0">
+                <Label x:Name="ErrorLabel"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource ErrorRed}"
+                       IsVisible="False" />
+
+                <HorizontalStackLayout Spacing="12"
+                                       HorizontalOptions="Center">
+                    <Button x:Name="ShowResultButton"
+                            Text="Показать результат"
+                            IsEnabled="False"
+                            Clicked="OnShowResultClicked" />
+                </HorizontalStackLayout>
+
+                <Border x:Name="ResultBorder"
+                        Padding="14"
+                        Margin="0,8,0,0"
+                        Stroke="{StaticResource Coffee}"
+                        StrokeThickness="1"
+                        BackgroundColor="{StaticResource CoffeeLight}"
+                        IsVisible="False">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+                    <Label x:Name="ResultLabel"
+                           FontSize="14"
+                           FontAttributes="None"
+                           TextColor="{StaticResource Gray900}" />
+                </Border>
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
